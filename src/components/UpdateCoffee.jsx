@@ -1,8 +1,9 @@
-import { useLoaderData } from "react-router-dom";
+import { useLoaderData, useParams } from "react-router-dom";
 import Swal from "sweetalert2";
 
 
 const UpdateCoffee = () => {
+ const {id}= useParams()
 
     const coffee = useLoaderData();
     const { _id, name, quantity, supplier, taste, category, details, photo } = coffee;
@@ -25,7 +26,7 @@ const UpdateCoffee = () => {
         console.log(updatedCoffee);
 
         // send data to the server
-        fetch(`http://localhost:5005/coffee/${_id}`, {
+        fetch(`http://localhost:5005/coffee/${id}`, {
             method: 'PUT',
             headers: {
                 'content-type': 'application/json'
